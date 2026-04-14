@@ -1,0 +1,17 @@
+# Private keys and tokens
+key
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Python artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Other
+.DS_Store
+.env
