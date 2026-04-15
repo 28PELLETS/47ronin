@@ -1,0 +1,29 @@
+name: 47 Ronin Ghost Mode (V1)
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # Runs every hour, on the hour.
+  push:
+    branches: [ main ]
+  workflow_dispatch:      # Allows manual "kick" from the GitHub UI.
+
+jobs:
+  industrial-pulse:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 1. Checkout the Shop (Code)
+        uses: actions/checkout@v4
+
+      - name: 2. Setup the Core (Python 3.11)
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 3. The Industrial Kick (Run Omni Master Pulse)
+        run: |
+          python3 omni_master_pulse.py
+          
+      - name: 4. Log the Truth (Optional)
+        run: |
+          echo "Pulse Status: GREEN. The 47 Ronin have standing watch."
+          date
